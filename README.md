@@ -67,6 +67,7 @@
     - 層化kfold (key="genre"+"region")
 
 3. model
+    ![2021-05-10-00-16-58](https://user-images.githubusercontent.com/64417843/117602853-9f3c5080-b18c-11eb-9bd6-c0ca00315a9e.png)
     - Fist Stage Prediction (10 seeds, 15 folds)
         1. lightGBM : class_weight="balanced" (逆ラベル頻度で重みづけ)
         2. kNN : n_neighbors=5, weights="distance"
@@ -89,9 +90,13 @@
     - cv score, public LB には stacking と weighted average, pseudo labeling の効果があった
 
 4. feature importance
+    ![2021-05-09-23-04-28](https://user-images.githubusercontent.com/64417843/117602760-70be7580-b18c-11eb-9abc-ec9b7845ba83.png)
+
     - first stage, lightGBM の 特徴量重要度
     - target encode 特徴量の重要度が少し高く，leak気味な気がしたが CV, LBともTEを用いないものと比べて比例して向上だったので，大丈夫そうだと思い採用
 
 5. confusion matrics
     - first stage の混合行列のプロット
+    ![2021-05-09-23-05-10](https://user-images.githubusercontent.com/64417843/117602898-b67b3e00-b18c-11eb-9b0e-831c0f1a00c1.png)
+
 
